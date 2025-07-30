@@ -136,6 +136,7 @@ Para distribuir la aplicación a usuarios finales:
 
 4. **Notas**
    - El frontend puede servirse directamente con `python -m http.server` desde la carpeta `frontend`.
+   - Si no cuentas con Node.js, utiliza el build ya compilado en `frontend_offline_final`. Coloca esa carpeta en la raíz del proyecto y ejecuta `python run_app.py` o abre `index.html` directamente.
 
 ## 📁 Estructura del Proyecto
 
