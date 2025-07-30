@@ -7,7 +7,8 @@ let balancesData = [];
 // Función para cargar datos del JSON
 const loadBalancesData = async () => {
     try {
-        const response = await fetch('/json/balances-data.json');
+        // Cargar el JSON desde una ruta relativa para permitir funcionamiento offline
+        const response = await fetch('./json/balances-data.json');
         const data = await response.json();
         balancesData = data.balances;
         return data;
