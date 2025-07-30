@@ -1,0 +1,261 @@
+/* Estilos para el componente FileUpload */
+
+.file-upload-container {
+    padding: 20px;
+}
+
+.upload-area {
+    border: 2px dashed #dbdbdb;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+    border-color: #3273dc;
+    background-color: #f0f8ff;
+}
+
+.upload-content {
+    color: #666;
+}
+
+.upload-content h3 {
+    color: #363636;
+    margin-bottom: 10px;
+}
+
+.upload-content .help {
+    color: #999;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.file-input-wrapper {
+    margin-top: 20px;
+}
+
+.processing-status {
+    margin: 20px 0;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3273dc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.results-container,
+.error-container {
+    margin: 20px 0;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Estilos para el drag and drop */
+.upload-area.dragover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(50, 115, 220, 0.2);
+}
+
+/* Estilos para las notificaciones */
+.notification {
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.notification.is-info {
+    background-color: #f0f8ff;
+    color: #3273dc;
+    border: 1px solid #3273dc;
+}
+
+.notification.is-success {
+    background-color: #f0fff4;
+    color: #48c774;
+    border: 1px solid #48c774;
+}
+
+.notification.is-danger {
+    background-color: #fff5f5;
+    color: #f14668;
+    border: 1px solid #f14668;
+}
+
+/* Estilos para el contenido de resultados */
+.results-container .content,
+.error-container .content {
+    margin: 0;
+}
+
+.results-container .title,
+.error-container .title {
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para las columnas de información */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+
+/* Estilos para botones */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.button.is-primary {
+    background-color: #3273dc;
+    border-color: #3273dc;
+    color: white;
+}
+
+.button.is-primary:hover {
+    background-color: #2366d1;
+    border-color: #2366d1;
+}
+
+.button.is-info {
+    background-color: #3298dc;
+    border-color: #3298dc;
+    color: white;
+}
+
+.button.is-info:hover {
+    background-color: #238cd1;
+    border-color: #238cd1;
+}
+
+.button.is-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Estilos para iconos */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.icon:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+/* Estilos para títulos */
+.title {
+    color: #363636;
+    font-weight: 600;
+    line-height: 1.125;
+}
+
+.title.is-4 {
+    font-size: 1.5rem;
+}
+
+.title.is-5 {
+    font-size: 1.25rem;
+}
+
+.title.is-6 {
+    font-size: 1rem;
+}
+
+/* Estilos para subtítulos */
+.subtitle {
+    color: #4a4a4a;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.25;
+}
+
+.subtitle.is-6 {
+    font-size: 1rem;
+}
+
+/* Estilos para márgenes */
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+/* Estilos para texto */
+strong {
+    font-weight: 600;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .upload-area {
+        padding: 20px;
+    }
+    
+    .columns {
+        flex-direction: column;
+    }
+    
+    .card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+} 

@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pandas
+pyarrow
+openpyxl
+fpdf2
+python-multipart
+aiofiles
