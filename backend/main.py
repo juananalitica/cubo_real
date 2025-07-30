@@ -57,7 +57,7 @@ def run_server(host="0.0.0.0", port=8000):
     reload = config.backend_reload if config.backend_reload else False
     debug = "debug" if config.backend_debug else "info"
 
-    uvicorn.run("backend.app.server:app", host=server_host, port=server_port, reload=reload, log_level=debug)
+    uvicorn.run("backend.main:app", host=server_host, port=server_port, reload=reload, log_level=debug)
 
 if __name__ == "__main__":
     run_server() 
