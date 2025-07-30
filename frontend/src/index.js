@@ -17,18 +17,17 @@ function renderAppLayout() {
             <div id="pageContent" class="page-content"></div>
         </main>
     `;
-    createSidebar(document.getElementById('sidebar'));
-    createNavbar(document.getElementById('navbar'));
+    // Almacenar las instancias de sidebar y navbar en variables globales
+    window.sidebar = createSidebar(document.getElementById('sidebar'));
+    window.navbar = createNavbar(document.getElementById('navbar'));
 }
 
 // Inicializar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     renderAppLayout();
     // Crear instancias globales usando funciones de creación
-    window.sidebar = createSidebar()
-    window.navbar = createNavbar()
-    window.sectionContent = createSectionContent()
-    window.app = createApp()
+    window.sectionContent = createSectionContent();
+    window.app = createApp();
     window.Utils = Utils
 
     // Exponer métodos útiles globalmente
