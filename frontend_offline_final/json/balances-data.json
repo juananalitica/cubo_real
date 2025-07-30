@@ -1,0 +1,133 @@
+{
+  "balances": [
+    {
+      "id": 1,
+      "concepto": "Venta de productos electrónicos",
+      "categoria": "Ventas",
+      "monto": 15000.00,
+      "fecha": "2024-01-15",
+      "tipo": "ingreso",
+      "descripcion": "Venta de smartphones y tablets",
+      "cliente": "Tienda Digital",
+      "metodo_pago": "transferencia"
+    },
+    {
+      "id": 2,
+      "concepto": "Compra de materia prima",
+      "categoria": "Compras",
+      "monto": 8500.00,
+      "fecha": "2024-01-14",
+      "tipo": "egreso",
+      "descripcion": "Compra de componentes electrónicos",
+      "proveedor": "ElectroSupply",
+      "metodo_pago": "efectivo"
+    },
+    {
+      "id": 3,
+      "concepto": "Pago de servicios públicos",
+      "categoria": "Gastos Operativos",
+      "monto": 1200.00,
+      "fecha": "2024-01-13",
+      "tipo": "egreso",
+      "descripcion": "Electricidad, agua e internet",
+      "proveedor": "Servicios Municipales",
+      "metodo_pago": "tarjeta"
+    },
+    {
+      "id": 4,
+      "concepto": "Comisión por venta online",
+      "categoria": "Comisiones",
+      "monto": 750.00,
+      "fecha": "2024-01-12",
+      "tipo": "ingreso",
+      "descripcion": "Comisión por ventas en plataforma digital",
+      "plataforma": "MercadoLibre",
+      "metodo_pago": "transferencia"
+    },
+    {
+      "id": 5,
+      "concepto": "Mantenimiento de equipos",
+      "categoria": "Mantenimiento",
+      "monto": 2300.00,
+      "fecha": "2024-01-11",
+      "tipo": "egreso",
+      "descripcion": "Reparación de computadoras y equipos",
+      "proveedor": "TecnoService",
+      "metodo_pago": "efectivo"
+    },
+    {
+      "id": 6,
+      "concepto": "Venta de accesorios",
+      "categoria": "Ventas",
+      "monto": 3200.00,
+      "fecha": "2024-01-10",
+      "tipo": "ingreso",
+      "descripcion": "Cables, cargadores y fundas",
+      "cliente": "Cliente Final",
+      "metodo_pago": "efectivo"
+    },
+    {
+      "id": 7,
+      "concepto": "Pago de nómina",
+      "categoria": "Recursos Humanos",
+      "monto": 8500.00,
+      "fecha": "2024-01-09",
+      "tipo": "egreso",
+      "descripcion": "Salarios del personal",
+      "empleados": 3,
+      "metodo_pago": "transferencia"
+    },
+    {
+      "id": 8,
+      "concepto": "Inversión en marketing",
+      "categoria": "Marketing",
+      "monto": 1800.00,
+      "fecha": "2024-01-08",
+      "tipo": "egreso",
+      "descripcion": "Publicidad en redes sociales",
+      "plataforma": "Facebook Ads",
+      "metodo_pago": "tarjeta"
+    },
+    {
+      "id": 9,
+      "concepto": "Reembolso a cliente",
+      "categoria": "Reembolsos",
+      "monto": 500.00,
+      "fecha": "2024-01-07",
+      "tipo": "egreso",
+      "descripcion": "Devolución por producto defectuoso",
+      "cliente": "Cliente Insatisfecho",
+      "metodo_pago": "transferencia"
+    },
+    {
+      "id": 10,
+      "concepto": "Venta de software",
+      "categoria": "Ventas",
+      "monto": 4500.00,
+      "fecha": "2024-01-06",
+      "tipo": "ingreso",
+      "descripcion": "Licencias de software empresarial",
+      "cliente": "Empresa ABC",
+      "metodo_pago": "transferencia"
+    }
+  ],
+  "categorias": [
+    "Ventas",
+    "Compras", 
+    "Gastos Operativos",
+    "Comisiones",
+    "Mantenimiento",
+    "Recursos Humanos",
+    "Marketing",
+    "Reembolsos"
+  ],
+  "tipos": [
+    "ingreso",
+    "egreso"
+  ],
+  "metodos_pago": [
+    "efectivo",
+    "transferencia",
+    "tarjeta"
+  ]
+} 
