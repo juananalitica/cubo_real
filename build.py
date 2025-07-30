@@ -57,9 +57,8 @@ def install_dependencies():
     # Instalar dependencias del frontend si está habilitado
     if config.is_frontend_mode():
         if not check_node_npm():
-            print("❌ Error: Node.js y npm no están instalados")
-            print("💡 Instala Node.js desde https://nodejs.org")
-            return False
+            print("⚠️ Node.js no encontrado. Se omitirá la instalación del frontend.")
+            return True
         
         frontend_dir = Path(__file__).parent / "frontend"
         if frontend_dir.exists():
@@ -301,20 +300,21 @@ def main():
     # Mostrar configuración
     config.print_config()
     
-    # Verificar Node.js si se necesita frontend
-    if config.is_frontend_mode():
-        if not check_node_npm():
-            print("❌ Error: Node.js y npm no están instalados")
-            print("💡 Instala Node.js desde https://nodejs.org")
-            sys.exit(1)
+    # Verificar Node.js solo si se compilará el frontend
+    if config.is_frontend_mode() and check_node_npm():
+        node_available = True
+    else:
+        node_available = False
+        if config.is_frontend_mode():
+            print("⚠️ Node.js no encontrado. Se omitirá la compilación del frontend")
     
     # Instalar dependencias
     if not install_dependencies():
         print("❌ Error instalando dependencias")
         sys.exit(1)
     
-    # Construir frontend si está habilitado
-    if config.is_frontend_mode():
+    # Construir frontend solo si Node está disponible
+    if config.is_frontend_mode() and node_available:
         if not build_frontend():
             print("❌ Error construyendo frontend")
             sys.exit(1)

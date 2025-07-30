@@ -18,14 +18,10 @@ Aplicación web completa con backend FastAPI y frontend HTML/CSS/JavaScript, con
 ### Windows
 - Python 3.8 o superior
 - pip (incluido con Python)
-- Node.js 16 o superior
-- npm (incluido con Node.js)
 
 ### Linux
 - Python 3.8 o superior
 - pip3
-- Node.js 16 o superior
-- npm (incluido con Node.js)
 
 ## 🚀 Instalación y Uso
 
@@ -136,10 +132,10 @@ Para distribuir la aplicación a usuarios finales:
    - La aplicación detectará automáticamente las dependencias necesarias.
 
 3. **Requisitos para el usuario final**
-   - Node.js y npm instalados en el sistema.
+   - Solo Python instalado. Node.js es opcional.
 
 4. **Notas**
-   - Si quieres un ejecutable que no dependa de Node, deberías empaquetar el build estático (`npm run build`) y servirlo con un mini-servidor Python.
+   - El frontend puede servirse directamente con `python -m http.server` desde la carpeta `frontend`.
 
 ## 📁 Estructura del Proyecto
 
@@ -214,6 +210,7 @@ Este error ocurre en sistemas Linux modernos. **Solución:**
    ```
 
 ### Error: "Node.js no está instalado"
+Si necesitas funcionalidades de Vite, instala Node.js:
 - **Windows**: Descarga e instala Node.js desde [nodejs.org](https://nodejs.org)
 - **Linux**: `sudo apt install nodejs npm`
 
@@ -251,10 +248,9 @@ cd backend
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
 
-# Frontend (con Vite)
+# Frontend estático
 cd frontend
-npm install
-npm run dev
+python -m http.server 5173
 
 # O usar el script completo
 python run_app.py

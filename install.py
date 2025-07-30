@@ -278,19 +278,18 @@ def install_dependencies():
         if mode in ['frontend', 'full']:
             frontend_dir = Path(__file__).parent / "frontend"
             package_json = frontend_dir / "package.json"
-            
+
             if package_json.exists():
-                print("🎨 Frontend detectado, instalando dependencias de Node.js...")
-                if not check_node_npm():
-                    print("❌ Node.js y/o npm no están instalados. No se pueden instalar las dependencias del frontend.")
-                    print("💡 Instala Node.js desde https://nodejs.org")
-                else:
+                print("🎨 Frontend detectado")
+                if check_node_npm():
                     try:
                         shell = platform.system() == "Windows"
                         subprocess.check_call(["npm", "install"], cwd=frontend_dir, shell=shell)
                         print("✅ Dependencias del frontend (npm) instaladas")
                     except subprocess.CalledProcessError as e:
                         print(f"❌ Error instalando dependencias del frontend: {e}")
+                else:
+                    print("⚠️ Node.js no encontrado. Saltando dependencias del frontend")
             else:
                 print("ℹ️ No se encontró frontend/package.json. Saltando dependencias del frontend.")
         
@@ -433,9 +432,7 @@ def main():
         if check_node_npm():
             print("✅ Node.js y npm detectados")
         else:
-            print("⚠️ Node.js no detectado - el frontend no funcionará")
-            print("💡 Instala Node.js desde https://nodejs.org")
-            print("   O en Linux: sudo apt install nodejs npm")
+            print("⚠️ Node.js no detectado. El frontend se servirá de forma estática")
         print()
     
     # Instalar dependencias
