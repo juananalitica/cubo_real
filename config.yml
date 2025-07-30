@@ -7,7 +7,7 @@ backend:
 frontend:
   port: 5173
   host: localhost
-  hot_reload: true
+  hot_reload: false
   open_browser: true
 build:
   mode: development

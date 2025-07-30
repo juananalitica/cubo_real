@@ -74,9 +74,13 @@ class CuboAppUnified:
     def install_frontend_dependencies(self):
         """Instala las dependencias del frontend"""
         frontend_dir = Path(__file__).parent / "frontend"
-        
+
         if not frontend_dir.exists():
             config.log("Directorio frontend no encontrado")
+            return False
+
+        if not self.check_node_npm():
+            print("⚠️ Node.js no encontrado. Omitiendo instalación de dependencias del frontend")
             return False
         
         node_modules = frontend_dir / "node_modules"
@@ -163,7 +167,7 @@ class CuboAppUnified:
         return False
     
     def start_frontend(self):
-        """Inicia el frontend en modo desarrollo con Vite."""
+        """Inicia el frontend en modo desarrollo o estático si Node no está disponible."""
         if not config.is_frontend_mode():
             config.log("Modo frontend no habilitado")
             return True
@@ -171,6 +175,10 @@ class CuboAppUnified:
         # En modo producción, usar el servidor de archivos estáticos
         if config.build_mode == 'production':
             return self.start_frontend_prod()
+
+        # Si no hay hot reload o no se detecta Node, servir de forma estática
+        if not config.get('frontend.hot_reload', False) or not self.check_node_npm():
+            return self.start_frontend_static()
 
         frontend_dir = Path(__file__).parent / "frontend"
         if not frontend_dir.exists():
@@ -209,6 +217,31 @@ class CuboAppUnified:
                 
         except Exception as e:
             print(f"❌ Error iniciando el frontend de desarrollo: {e}")
+            return False
+
+    def start_frontend_static(self):
+        """Sirve el frontend sin Node usando http.server."""
+        print("🚀 Iniciando frontend en modo estático...")
+        frontend_dir = Path(__file__).parent / "frontend"
+
+        if not frontend_dir.exists():
+            print("❌ No se encontró el directorio frontend")
+            return False
+
+        venv_python = self.find_venv_python()
+        python_executable = venv_python if venv_python else sys.executable
+
+        try:
+            self.frontend_process = subprocess.Popen([
+                python_executable, "-m", "http.server", str(config.frontend_port),
+                "--directory", str(frontend_dir)
+            ], cwd=frontend_dir)
+
+            print(f"✅ Frontend estático iniciado en {config.get_frontend_url()}")
+            self.is_running = True
+            return True
+        except Exception as e:
+            print(f"❌ Error iniciando el frontend estático: {e}")
             return False
 
     def start_frontend_prod(self):
@@ -348,12 +381,10 @@ class CuboAppUnified:
         # Mostrar configuración
         config.print_config()
         
-        # Verificar Node.js si se necesita frontend
-        if config.is_frontend_mode():
+        # Verificar Node.js solo si se desea hot reload
+        if config.is_frontend_mode() and config.get('frontend.hot_reload', False):
             if not self.check_node_npm():
-                print("❌ Error: Node.js y npm no están instalados")
-                print("💡 Instala Node.js desde https://nodejs.org")
-                return
+                print("⚠️ Node.js no encontrado, usando modo estático")
         
         # Configurar manejo de señales
         signal.signal(signal.SIGINT, self.signal_handler)
