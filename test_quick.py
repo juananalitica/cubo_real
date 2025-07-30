@@ -34,7 +34,7 @@ def check_venv():
 def check_backend_files():
     """Verifica que los archivos del backend existan"""
     backend_dir = Path(__file__).parent / "backend"
-    server_script = backend_dir / "app" / "server.py"
+    server_script = backend_dir / "main.py"
     
     if not backend_dir.exists():
         print("❌ Directorio backend no encontrado")
@@ -62,7 +62,7 @@ def test_server():
     
     # Iniciar servidor
     backend_dir = Path(__file__).parent / "backend"
-    server_script = backend_dir / "app" / "server.py"
+    server_script = backend_dir / "main.py"
     
     try:
         # Cambiar al directorio del backend

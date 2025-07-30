@@ -145,7 +145,7 @@ cubo_app/
 │   ├── app/
 │   │   ├── __init__.py
 │   │   ├── main.py          # API FastAPI
-│   │   └── server.py        # Servidor backend
+│   ├── main.py          # Servidor backend
 │   ├── requirements.txt     # Dependencias Python
 │   └── dist/               # Ejecutable generado
 ├── frontend/
@@ -222,7 +222,7 @@ Si necesitas funcionalidades de Vite, instala Node.js:
 - **Linux**: `sudo apt install python3-venv`
 
 ### Error: "Puerto 8000 en uso"
-- Cambia el puerto en `backend/app/server.py` línea 35
+- Cambia el puerto en `backend/main.py` línea 35
 - O detén otros servicios que usen el puerto 8000
 
 ### Error: "No se pudo abrir el navegador"
