@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestor de Registros</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; }
+    th, td { padding: 0.5rem; }
+    #mensaje { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gestor de Registros</h1>
+  </header>
+  
+  <main>
+    <section>
+      <table id="tablaRegistros">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Fecha</th>
+            <th>Monto</th>
+            <th>Notas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    
+    <section>
+      <h2>Agregar registro</h2>
+      <form id="formRegistro">
+        <label>Nombre
+          <input type="text" id="nombre" required />
+        </label>
+        <label>Categoría
+          <input type="text" id="categoria" required />
+        </label>
+        <label>Fecha
+          <input type="date" id="fecha" required />
+        </label>
+        <label>Monto
+          <input type="number" id="monto" step="0.01" required />
+        </label>
+        <label>Notas
+          <input type="text" id="notas" />
+        </label>
+        <button type="submit">Agregar</button>
+      </form>
+    </section>
+    
+    <div id="mensaje" aria-live="polite"></div>
+  </main>
+  
+  <script>
+    const tbody = document.querySelector('#tablaRegistros tbody');
+    const mensaje = document.getElementById('mensaje');
+
+    function mostrarMensaje(texto, tipo = 'exito') {
+      mensaje.textContent = texto;
+      mensaje.style.color = tipo === 'error' ? 'red' : 'green';
+    }
+
+    function crearFila(obj) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${obj.Nombre}</td>
+        <td>${obj.Categoría}</td>
+        <td>${obj.Fecha}</td>
+        <td>${obj.Monto}</td>
+        <td>${obj.Notas || ''}</td>
+        <td><button type="button" class="eliminar">Eliminar</button></td>
+      `;
+      tr.querySelector('.eliminar').addEventListener('click', () => {
+        tr.remove();
+        mostrarMensaje('Registro eliminado');
+      });
+      tbody.appendChild(tr);
+    }
+
+    fetch('datos_simulados.json')
+      .then(r => r.json())
+      .then(data => data.forEach(crearFila))
+      .catch(() => mostrarMensaje('Error al cargar datos', 'error'));
+
+    document.getElementById('formRegistro').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nuevo = {
+        Nombre: document.getElementById('nombre').value,
+        Categoría: document.getElementById('categoria').value,
+        Fecha: document.getElementById('fecha').value,
+        Monto: document.getElementById('monto').value,
+        Notas: document.getElementById('notas').value
+      };
+      crearFila(nuevo);
+      mostrarMensaje('Registro agregado');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

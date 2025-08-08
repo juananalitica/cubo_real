@@ -1,0 +1,23 @@
+[
+  {
+    "Nombre": "Juan Pérez",
+    "Categoría": "Comida",
+    "Fecha": "2024-05-01",
+    "Monto": 25.5,
+    "Notas": "Almuerzo"
+  },
+  {
+    "Nombre": "María López",
+    "Categoría": "Transporte",
+    "Fecha": "2024-05-02",
+    "Monto": 15,
+    "Notas": "Taxi"
+  },
+  {
+    "Nombre": "Carlos Gómez",
+    "Categoría": "Entretenimiento",
+    "Fecha": "2024-05-03",
+    "Monto": 50,
+    "Notas": "Cine"
+  }
+]
