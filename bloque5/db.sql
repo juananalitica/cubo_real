@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre TEXT,
+  descripcion TEXT
+);
